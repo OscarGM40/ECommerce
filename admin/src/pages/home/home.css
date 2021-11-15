@@ -1,0 +1,23 @@
+ .home {
+    /* width: 100%;   */
+    width: 99%;  
+}
+
+.homeWidgets {
+   display: flex;
+   margin: 20px;
+   /* width: 100%; */
+}
+.chartWrapper{
+   margin: 20px;
+}
+@media  screen and (max-width: 992px) {
+   .home {
+      width: 99%;  
+   }
+   .homeWidgets {
+      flex-direction: column;
+      margin: 20px;
+   }
+   
+}

@@ -1,0 +1,108 @@
+.navbarWrapper {
+  height: 100%;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: navbarColor 8s forwards;
+}
+
+@keyframes navbarColor {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: rgba(207, 126, 33, 0.445);
+  }
+}
+
+.navbarLeft {
+  display: flex;
+  align-items: center;
+}
+.logo{
+   height: 50px;
+   background:rgba(255,255,255,0.2);
+   border-radius: 3px;
+
+}
+
+.logo img {
+   height: inherit;
+}
+
+.navbarLinks{
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.navbarLink:nth-of-type(1) {
+  margin-left: 20px;
+  cursor: pointer;
+}
+.navbarLink:nth-of-type(2) {
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+.icono{
+  position: absolute;
+  top: -9px;
+  left: 130px;
+}
+
+.search {
+  width: 400px;
+  height: 24px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+.searchInput {
+  width: 80%;
+  border: none;
+  margin-left: 20px;
+  outline: none;
+}
+
+.navbarRight {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbarName {
+  margin: 0px 10px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 992px) {
+  .navbarCenter {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .navbarCenter {
+    display: none;
+  }
+  .navbarLink.navbarLink:nth-of-type(1) {
+    display: none;
+  }
+  .icono{
+    left: 60px;
+  }
+  .navbarName{
+    display: none;
+  }
+}

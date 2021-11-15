@@ -1,0 +1,135 @@
+:root {
+   --semiblack:#111827;
+   --gray:#9ca3af;
+   --gray2:#4b4b4b;
+}
+.sidebar {
+   width: 180px;
+   height: calc(100vh - 50px);
+   min-height: 100%;
+   background-color:var(--semiblack);
+   color:var(--gray);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
+   overflow-y: auto;
+   overflow-x: hidden;
+   transform:translateX(0px);
+   transition: transform 0.8s ease-in-out;
+   transition: width 0.8s ease-in-out;
+
+}
+.sidebar.hidden {
+   transform:translateX(-180px);
+   transition: transform 0.8s ease-in-out;
+   transition: width 0.8s ease-in-out;
+   width: 0;
+   /* display: none; */
+}   
+
+/* 
+.sidebarWrapper{
+ padding-left: 5px;
+} */
+
+.sidebarMenu {
+   margin-top:20px;
+   border-bottom: 1px solid #000;
+}
+
+
+.sidebarTitle {
+   font-size: 18px;
+   font-weight: 700;
+   color: rgb(197, 197, 197);
+   margin-top: 10px;
+   margin-bottom: 10px;
+   border-bottom: 1px dashed white;
+   padding-bottom: 5px;
+}
+
+.sidebarlink {
+   text-decoration: none;
+   color:unset;
+}
+
+.sidebar-bottom {
+   width: 80%;
+   padding: 10px 0;
+   margin-bottom: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border:none;
+   border-top: 1px solid var(--gray2);
+   border-bottom: 1px solid var(--gray2);
+   
+}
+
+.color-box {
+   width: 25px;
+   height: 25px;
+   border: 2px solid rgb(192, 190, 190);
+   border-radius: 5px;
+   cursor: pointer;
+   margin-left: 10px;
+   position: relative;
+   left:-5px; 
+}
+
+.dark {
+   background-color: #111827;
+}
+
+.night {
+   background-color: #312e81;
+}
+
+.light {
+   background-color: #f3f4f6;
+}
+
+/* COLORS DEFINITION */
+.sidebar.night{
+   background-color: #312e81;
+   color:#b4bbc7;
+}
+
+.sidebar.light{
+   background-color: #f3f4f6;
+   color:#111827;
+}
+
+.sidebarTitle.light{
+   color:rgb(134, 123, 123);
+}
+
+@media screen and (max-width: 992px) {
+   .sidebar {
+      align-items: start;
+      width: 55px;
+      min-height: inherit;
+   }
+   .sidebarWrapper{
+    padding-left: 5px;
+   } 
+   
+   .sidebarMenu {
+      border-bottom: 1px solid white;
+   }
+   
+   .sidebarTitle{
+      display:none;  
+   }
+   
+   .sidebar-bottom{
+      flex-direction: column;
+      align-items: start;
+      margin-left: 5px;
+      margin-top: 10px;
+   }
+   .color-box {
+      margin-bottom: 5px;
+   }
+}
