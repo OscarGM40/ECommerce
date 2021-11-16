@@ -13,8 +13,8 @@ import Success from "../pages/Success";
 const MainRouter = () => {
  
   const user = useSelector( (state) => state.user.currentUser);
-  // const user = false;
   // console.log(user,'user')
+  // const user = false;
   
   return (
     <Router>
@@ -37,6 +37,7 @@ const MainRouter = () => {
         
         <Route path="/login">
           {user ? <Redirect to="/" /> : <Login />}
+          {/* <Login /> */}
         </Route>
         <Route path="/register">
          {user ? <Redirect to="/" /> : <Register />}

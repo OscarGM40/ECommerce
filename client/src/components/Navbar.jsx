@@ -3,8 +3,9 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobileportrait } from "../helpers/responsive";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logoutCall } from "../redux/apiCalls";
 
 const Container = styled.div`
   height: 60px;
@@ -70,7 +71,24 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
   const cart = useSelector((state) => state.cart);
-  // console.log(cart)
+  const user = useSelector((state) => state.user);
+
+  console.log(user.currentUser, "user");
+  
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+      logoutCall(dispatch);
+      setTimeout(() => window.location.href = '/login', 200);
+    }
+    
+    const handleRegister = () => {
+      logoutCall(dispatch);
+      setTimeout(() => window.location.href = '/register', 200);
+   }
+
+  
+  
   return (
     <Container>
       <Wrapper>
@@ -88,11 +106,13 @@ const Navbar = () => {
           <Link
             to="/register"
             style={{ textDecoration: "none", color: "black" }}
+            onClick={handleRegister}
           >
             <MenuItem>REGISTER</MenuItem>
           </Link>
-          <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
-            <MenuItem>SIGN IN</MenuItem>
+          <Link to="/login" style={{ textDecoration: "none", color: "black" }}
+          onClick={handleLogout} > 
+            <MenuItem>{user.currentUser ? "LOGOUT" : "LOGIN" }</MenuItem>
           </Link>
           <Link
             to="/cart"

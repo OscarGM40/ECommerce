@@ -1,5 +1,5 @@
 import { axiosWithoutJwtInstance } from "../helpers/axiosInstance";
-import { loginFailure, loginStart, loginSuccess } from "./user/userSlice"
+import { loginFailure, loginStart, loginSuccess, logoutFailure, logoutStart, logoutSuccess } from "./user/userSlice"
 
 
 export const loginCall = async(user,dispatch) => {
@@ -12,3 +12,14 @@ export const loginCall = async(user,dispatch) => {
       dispatch(loginFailure())
    }
 }
+
+
+export const logoutCall = async (dispatch) => {
+   dispatch(logoutStart());
+   try {
+     dispatch(logoutSuccess());
+   } catch (error) {
+     console.log(error);
+     dispatch(logoutFailure());
+   }
+ };

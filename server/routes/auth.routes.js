@@ -38,7 +38,7 @@ router.post("/login", async (req = request, res = response) => {
             id: user.id,
             isAdmin: user.isAdmin,
         }, process.env.JWT_SECRET, {
-            expiresIn: "30d"
+            expiresIn: "7d"
         })
         /* puedo sacar varias propiedades a un objeto SPREAD, pues esparzo sus propiedades */
         const { password, casa, ...others } = user._doc;

@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   padding: 20px;
   background-color: #1682da44;
   border-radius: 10px;
-  ${ mobileportrait( { width:"80%"} ) };
+  ${mobileportrait({ width: "80%" })};
 `;
 const Title = styled.h1`
   font-size: 28px;
@@ -62,6 +62,28 @@ const Button = styled.button`
   }
 `;
 
+const Link = styled.a`
+ text-decoration: none;
+ color:inherit;
+ margin-left: 10px;
+ font-size: 14px;
+ color: #1c4d4d;
+ background-color: #1682da44;
+  padding: 5px 10px;
+  border-radius: 9px;
+  cursor: pointer;  
+  transition: background-color 0.3s linear, color 0.3s linear;
+  &:hover {
+    background-color: #1c4d4d;
+    color: white;
+    box-shadow:
+      1px 1px 5px #1d1a2ecc,
+      2px 2px 10px #14103acc;
+  }
+ `;
+
+
+
 const Register = () => {
   return (
     <Container>
@@ -77,6 +99,7 @@ const Register = () => {
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
+            <span style={{fontSize:13,marginTop:10,display:"inline-block"}}>Already have an account?</span><Link href="/login">Login</Link>
           </Agreement>
           <Button>CREATE</Button>
         </Form>
