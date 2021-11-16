@@ -82,7 +82,6 @@ const NewProduct = () => {
         onSubmit={handleSubmit}
         className="addProductForm">
         <div className="addProductItem">
-
           <label>Product Image</label>
           <input
             type="file"

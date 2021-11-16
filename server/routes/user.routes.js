@@ -7,6 +7,30 @@ const CryptoJS = require("crypto-js");
 const User = require("../models/User");
 
 const router = require("express").Router();
+// CREATE UER BY ADMIN
+router.post("/createbyadmin", verifyTokenAndOnlyAdmin, async (req = request, res = response) => {
+    //usar el constructo o el método build solo crear un object
+    const userExists = await User.findOne({
+      $or: [{ username: req.body.username }, { email: req.body.email }], 
+    });
+    if (userExists) {
+      return res.status(400).json("User already exists");
+    }
+    const { password, ...user } = req.body;
+    const newUser = new User({
+        ...user,
+        password: CryptoJS.AES.encrypt(req.body.password, process.env.CRYPTO_SEED).toString()
+    });
+
+    try {
+        const savedUser = await newUser.save();
+        const { password, ...rest } = savedUser._doc;
+
+        res.status(201).json(rest);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
 
 // UPDATE A USER
 router.put(
@@ -59,7 +83,7 @@ router.get("/find/:id", verifyTokenAndOnlyAdmin, async (req, res) => {
   }
 });
 
-// GET USER(only Admin can get user,not even same user can)
+// GET ALL USERS OR LAST 5 (only Admin can get users)
 router.get("/", verifyTokenAndOnlyAdmin, async (req, res) => {
   const latestUsers = req.query.new;
 

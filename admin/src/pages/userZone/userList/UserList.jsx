@@ -25,7 +25,7 @@ const UserList = () => {
     { field: "_id", headerName: "ID", width: 260 },
     {
       field: "user",
-      headerName: "User",
+      headerName: "Username",
       width: 200,
       renderCell: (params) => {
         return (
@@ -37,7 +37,9 @@ const UserList = () => {
       },
     },
     { field: "email", headerName: "Email", width: 200 },
-    { field: "isAdmin", headerName: "Admin", width: 200 },
+    { field: "isAdmin", headerName: "Admin", width: 160 },
+    { field: "phone", headerName: "Phone", width: 200 },
+    { field: "birthDate", headerName: "Date of birth", width: 200 },
     {
       field: "action",
       headerName: "Action",

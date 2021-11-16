@@ -23,6 +23,9 @@ import {
   getUsersFailure,
   getUsersStart,
   getUsersSuccess,
+  createUserStart,
+  createUserSuccess,
+  createUserFailure,
   loginFailure,
   loginStart,
   loginSuccess,
@@ -30,7 +33,6 @@ import {
   logoutStart,
   logoutSuccess,
 } from "./userRedux";
-
 
 // fijate que con un apiCalls me deberia valer,aunque no es mala idea hacer varios si el proyecto es grande
 export const loginCall = async (user, dispatch) => {
@@ -53,7 +55,7 @@ export const logoutCall = async (dispatch) => {
     dispatch(logoutFailure());
   }
 };
-
+// CRUD USERS
 export const getUsersCall = async (dispatch) => {
   dispatch(getUsersStart());
   try {
@@ -65,7 +67,19 @@ export const getUsersCall = async (dispatch) => {
   }
 };
 
-export const deleteUserCall = async (id,dispatch) => {
+export const createUserCall = async (user, dispatch) => {
+  dispatch(createUserStart());
+  try {
+    const res = await axiosWithJwtInstance.post(`/users/createbyadmin`, user);
+    // console.log(res.data, "res.data");
+    dispatch(createUserSuccess(res.data));
+  } catch (error) {
+    console.log(error);
+    dispatch(createUserFailure(error));
+  }
+};
+
+export const deleteUserCall = async (id, dispatch) => {
   dispatch(deleteUserStart());
   try {
     await axiosWithJwtInstance.delete(`/users/${id}`);
@@ -76,6 +90,7 @@ export const deleteUserCall = async (id,dispatch) => {
   }
 };
 
+// CRUD PRODUCTS
 export const getProductsCall = async (dispatch) => {
   dispatch(getProductStart());
   try {
@@ -87,7 +102,7 @@ export const getProductsCall = async (dispatch) => {
   }
 };
 
-export const deleteProductCall = async (id,dispatch) => {
+export const deleteProductCall = async (id, dispatch) => {
   dispatch(deleteProductStart());
   try {
     await axiosWithJwtInstance.delete(`/products/${id}`);
@@ -98,22 +113,21 @@ export const deleteProductCall = async (id,dispatch) => {
   }
 };
 
-
-export const updateProductCall = async (id, product ,dispatch) => {
+export const updateProductCall = async (id, product, dispatch) => {
   dispatch(updateProductStart());
   try {
-    await axiosWithJwtInstance.put(`/products/${id}`,product);
-    dispatch(updateProductSuccess({id,product}));
+    await axiosWithJwtInstance.put(`/products/${id}`, product);
+    dispatch(updateProductSuccess({ id, product }));
   } catch (error) {
     console.log(error);
     dispatch(updateProductFailure());
   }
 };
 
-export const createProductCall = async (product,dispatch) => {
+export const createProductCall = async (product, dispatch) => {
   dispatch(createProductStart());
   try {
-    const res = await axiosWithJwtInstance.post(`/products`,product);
+    const res = await axiosWithJwtInstance.post(`/products`, product);
     dispatch(createProductSuccess(res.data));
   } catch (error) {
     console.log(error);
