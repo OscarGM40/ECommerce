@@ -87,11 +87,14 @@ const Login = () => {
     e.preventDefault();
     const user = { email, password }
 
-    // console.logJSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
-
     // diria que en cuanto use apiCalls y dispatchs en su interior como es este caso tengo que usar esta sintaxis method(data,dispatch)
-    loginCall(user,dispatch)   
-    setTimeout( () => window.location.href = "/",300) 
+    try{
+      loginCall(user,dispatch)  
+      setTimeout( () => window.location.href = "/",500) 
+    }catch(e){
+      console.log(e)
+    }
+
     
   };
 

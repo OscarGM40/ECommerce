@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema({
     phone: { type: String, required: false, unique: false,minlength:9},
     address: { type: String, required: false, unique: false},
     birthDate: { type: String, required: false, unique: false},
+    img:{type:String,required:false,default:""},
     gender: {
         type: String, 
         enum: ["male", "female","others"]

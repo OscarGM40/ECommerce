@@ -9,7 +9,7 @@ const Navbar = ({setHandleAside,handleAside}) => {
     setHandleAside( (prev) => (!prev))
   }
   
- const {username} = useSelector((state) => state.user.currentUser);
+ const {username,img} = useSelector((state) => state.user.currentUser);
 
   return (
     <div className="navbarWrapper">
@@ -38,7 +38,8 @@ const Navbar = ({setHandleAside,handleAside}) => {
       <div className="navbarRight">
         <img
           className="avatar"
-          src="https://images.pexels.com/photos/3024627/pexels-photo-3024627.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          // src="https://images.pexels.com/photos/3024627/pexels-photo-3024627.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          src={img ? img : "https://images.pexels.com/photos/3024627/pexels-photo-3024627.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"}
           alt=""
         />
         {/* <span className="navbarName">{name}</span> */}

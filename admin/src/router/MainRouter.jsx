@@ -30,6 +30,7 @@ const MainRouter = () => {
       admin = JSON.parse(JSON.parse(localStorage.getItem('persist:root')).user).currentUser?.isAdmin;
 
    }catch(err){
+      window.location.href="/login"
       console.log(err)
    }
 
