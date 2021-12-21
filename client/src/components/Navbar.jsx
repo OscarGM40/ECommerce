@@ -73,7 +73,7 @@ const Navbar = () => {
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user);
 
-  console.log(user.currentUser, "user");
+  // console.log(user.currentUser, "user");
   
   const dispatch = useDispatch()
 

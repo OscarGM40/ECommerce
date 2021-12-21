@@ -5,8 +5,7 @@ try {
   token = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
     .currentUser?.accessToken;
 } catch (e) {
-  localStorage.removeItem("persist:root");
-  token = null;
+  // localStorage.removeItem("persist:root");
   window.location.href = "/login";
 }
 
@@ -22,12 +21,13 @@ export const axiosWithoutJwtInstance = axios.create({
  });
 
  export const axiosWithJwtInstance = axios.create({
-  baseURL: "http://localhost:8000/api",
-  //  baseURL: process.env.REACT_APP_API_URL,
+   baseURL: "http://localhost:8000/api",
+   //  baseURL: process.env.REACT_APP_API_URL,
    timeout: 5000,
    headers: {
      "Content-Type": "application/json",
-     token:`Bearer ${token}`,
+     Accept: "application/json",
+     token: `Bearer ${token}`,
    },
  });
 

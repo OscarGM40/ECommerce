@@ -99,8 +99,8 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // console.log(user,'user en el login');
     loginCall(user,dispatch)
+    setTimeout(() => window.location.reload(), 100);
   };
   
   return (
