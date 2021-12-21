@@ -12,8 +12,7 @@ import Success from "../pages/Success";
 
 const MainRouter = () => {
  
-  const user = useSelector( (state) => state.user.currentUser);
-  // console.log(user,'user')
+  const user = useSelector( (state) => state.user.currentUser) || false;
   // const user = false;
   
   return (

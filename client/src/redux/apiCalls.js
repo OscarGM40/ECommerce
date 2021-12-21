@@ -18,6 +18,7 @@ export const logoutCall = async (dispatch) => {
    dispatch(logoutStart());
    try {
      dispatch(logoutSuccess());
+      localStorage.removeItem("persist:root");
    } catch (error) {
      console.log(error);
      dispatch(logoutFailure());

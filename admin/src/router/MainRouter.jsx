@@ -21,14 +21,17 @@ import MyModal from '../components/modal/MyModal';
 
 const MainRouter = () => {
 
-   // const admin = true;
-
-   // const admin = false;
-
    const [CSSclass, setCSSClass] = useState("")
    const [handleAside, setHandleAside] = useState(false);
 
-   const admin = JSON.parse(JSON.parse(localStorage.getItem('persist:root')).user).currentUser?.isAdmin;
+   let admin = false;
+
+   try {
+      admin = JSON.parse(JSON.parse(localStorage.getItem('persist:root')).user).currentUser?.isAdmin;
+
+   }catch(err){
+      console.log(err)
+   }
 
 
    return (

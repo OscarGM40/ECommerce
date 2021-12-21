@@ -1,8 +1,14 @@
 import axios from "axios";
 
-
-const token = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-  .currentUser?.accessToken;  
+let token;
+try {
+  token = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
+    .currentUser?.accessToken;
+} catch (e) {
+  localStorage.removeItem("persist:root");
+  token = null;
+  window.location.href = "/login";
+}
 
 
 export const axiosWithoutJwtInstance = axios.create({
@@ -21,7 +27,6 @@ export const axiosWithoutJwtInstance = axios.create({
    timeout: 5000,
    headers: {
      "Content-Type": "application/json",
-     Accept: "application/json",
      token:`Bearer ${token}`,
    },
  });
