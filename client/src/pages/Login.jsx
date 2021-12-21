@@ -88,8 +88,8 @@ const Login = () => {
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
   const {isFetching,error} = useSelector( state => state.user)
-  
-  const handleInput = ({ target }) => {
+
+    const handleInput = ({ target }) => {
     setUser({
       ...user,
       [target.name]: target.value,
@@ -100,7 +100,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     loginCall(user,dispatch)
-    setTimeout(() => window.location.reload(), 100);
+    // setTimeout(() => window.location.reload(), 100);
   };
   
   return (
@@ -123,7 +123,7 @@ const Login = () => {
           <Button type="submit"
           disabled={isFetching}
           >LOGIN</Button>
-          {error && <Error>Something went wrong</Error>}
+          {error && <Error>Something went wrong: {error}</Error>}
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Enlace to="/register" style={{
             margin:"5px 0px",
