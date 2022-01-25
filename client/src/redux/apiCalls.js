@@ -7,9 +7,10 @@ export const loginCall = async(user,dispatch) => {
    try {
       const res = await axiosWithoutJwtInstance.post("/auth/login",user);
       dispatch(loginSuccess(res.data));   
+      console.log(res.data)
    } catch (error) {
       console.log(error)
-      dispatch(loginFailure())
+      // dispatch(loginFailure())
    }
 }
 
