@@ -19,7 +19,7 @@ app.use("/api/orders", require('./routes/order.routes'));
 app.use("/api/checkout", require('./routes/stripe.routes'));
 
 
-app.listen(process.env.API_PORT || 8000, () => {
+app.listen(process.env.API_PORT || 8001, () => {
     console.clear();
     console.log(`Server Express en puerto ${process.env.API_PORT}`)
 })
